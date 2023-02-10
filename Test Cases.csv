@@ -1,0 +1,3414 @@
+﻿"Title","Preconditions","Section","Section Description","Steps","Steps","Steps (Expected Result)","Steps (Step)","Suite"
+"Создание токена с валидными данными для аутентификации","Открыт Postman","Auth","CreateToken","","1. Выбрать метод **POST** 
+2. Ввести URL https://restful-booker.herokuapp.com/auth
+3. В теле запроса ввести 
+**{
+""username"" : ""admin"",
+""password"" : ""password123""
+}**
+4. Нажать **Отправить**","","","Restful_booker  / Божкова И.В."
+"Создание токена с невалидными данными для аутентификации","Открыт Postman.
+Выбран метод **POST** и введен URL https://restful-booker.herokuapp.com/auth","Auth","CreateToken","1. В теле ввести **{ ""username"" : ""testname"", ""password"" : ""testpassword12"" }** и нажать **Отправить** (невалидные имя пользователя и пароль)
+Expected Result:
+В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+2. В теле ввести **{ ""username"" : ""admin"", ""password"" : ""testpassword12"" }** и нажать **Отправить** (валидное имя пользователя, невалидный пароль)
+Expected Result:
+В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}** 
+
+и код состояния HTTP 400
+3. В теле ввести **{ ""username"" : ""testname"", ""password"" : ""password123"" }** и нажать **Отправить** (невалидное имя пользователя, валидный пароль)
+Expected Result:
+В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+4. В теле ввести **{ ""username"" : ""admin"", ""password"" : """" }** и нажать **Отправить** (валидное имя пользователя, обязательный параметр ""пароль"" не заполнен)
+Expected Result:
+В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+5. В теле ввести **{ ""username"" : """", ""password"" : ""password123"" }** и нажать **Отправить** (обязательный параметр ""имя пользователя"" не заполнен, валидный пароль)
+Expected Result:
+В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+6. В теле ввести **{ ""username"" : """", ""password"" : """" }** и нажать **Отправить** (обязательные параметры ""имя пользователя""и ""пароль"" незаполнены)
+Expected Result:
+В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+7. В теле ввести **{ ""username"" : ""ADmin"", ""password"" : ""password123"" }** и нажать **Отправить** (регистрозависимость значения ключа)
+Expected Result:
+В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+8. В теле ввести **{ ""username"" : ""admin"", ""password"" : ""password"" }** и нажать **Отправить** (первая буква ""а"" в слове ""admin"" введена кириллицей)
+Expected Result:
+В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+9. В теле ввести **{ ""USERNAME"" : ""admin"", ""password"" : ""password123"" }** и нажать **Отправить** (регистрозависимость ключа)
+Expected Result:
+В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+10. В теле ввести **{ ""username"" : ""admin"" }** и нажать **Отправить** 
+
+(второй обязательный параметр отсутствует)
+Expected Result:
+В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+11. В теле ввести **{ ""mynameis"" : ""admin"", ""password"" : ""password123"" }** и нажать **Отправить** 
+
+(несуществующий ключ)
+Expected Result:
+В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400","","1. В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+2. В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}** 
+
+и код состояния HTTP 400
+3. В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+4. В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+5. В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+6. В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+7. В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+8. В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+9. В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+10. В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400
+11. В теле ответа отображается результат: 
+
+**{
+    ""reason"": ""Bad credentials""
+}**
+
+и код состояния HTTP 400","1. В теле ввести **{ ""username"" : ""testname"", ""password"" : ""testpassword12"" }** и нажать **Отправить** (невалидные имя пользователя и пароль)
+2. В теле ввести **{ ""username"" : ""admin"", ""password"" : ""testpassword12"" }** и нажать **Отправить** (валидное имя пользователя, невалидный пароль)
+3. В теле ввести **{ ""username"" : ""testname"", ""password"" : ""password123"" }** и нажать **Отправить** (невалидное имя пользователя, валидный пароль)
+4. В теле ввести **{ ""username"" : ""admin"", ""password"" : """" }** и нажать **Отправить** (валидное имя пользователя, обязательный параметр ""пароль"" не заполнен)
+5. В теле ввести **{ ""username"" : """", ""password"" : ""password123"" }** и нажать **Отправить** (обязательный параметр ""имя пользователя"" не заполнен, валидный пароль)
+6. В теле ввести **{ ""username"" : """", ""password"" : """" }** и нажать **Отправить** (обязательные параметры ""имя пользователя""и ""пароль"" незаполнены)
+7. В теле ввести **{ ""username"" : ""ADmin"", ""password"" : ""password123"" }** и нажать **Отправить** (регистрозависимость значения ключа)
+8. В теле ввести **{ ""username"" : ""admin"", ""password"" : ""password"" }** и нажать **Отправить** (первая буква ""а"" в слове ""admin"" введена кириллицей)
+9. В теле ввести **{ ""USERNAME"" : ""admin"", ""password"" : ""password123"" }** и нажать **Отправить** (регистрозависимость ключа)
+10. В теле ввести **{ ""username"" : ""admin"" }** и нажать **Отправить** 
+
+(второй обязательный параметр отсутствует)
+11. В теле ввести **{ ""mynameis"" : ""admin"", ""password"" : ""password123"" }** и нажать **Отправить** 
+
+(несуществующий ключ)","Restful_booker  / Божкова И.В."
+"Проверка параметров заголовков запроса","Открыт Postman 
+Выбран метод POST и введен URL https://restful-booker.herokuapp.com/auth
+В теле введено **{ ""username"" : ""admin"", ""password"" : ""password123"" }**","Auth","CreateToken","1. Нажать ""Headers"", в поле ""KEY"" ввести **CONTENT-TYPE**, в поле ""VALUE"" ввести **APPLICATION/JSON** и нажать **Отправить**
+
+(регистронезависимость)
+Expected Result:
+В теле ответа отображается результат: токен (строковое значение) вида
+
+**{ ""token"": ""<значение_токена>"" }**
+
+и код состояния HTTP 200
+2. Нажать ""Headers"", рядом с заголовком **Content-type** убрать ""галочку"", сделав заголовок неактивным и нажать **Отправить**
+
+(обязательность)
+Expected Result:
+В теле ответа отображается результат:
+
+**{ ""reason"": ""Bad credentials"" }**
+
+и код состояния HTTP 400
+3. Нажать ""Headers"", в поле ""KEY"" ввести **CONTENT-TYPE**, в поле ""VALUE"" ввести **application** и нажать **Отправить** 
+
+
+(недопустимое значение в заголовоке)
+Expected Result:
+В теле ответа отображается результат:
+
+**{ ""reason"": ""Bad credentials"" }**
+
+и код состояния HTTP 400
+4. Нажать ""Headers"", в поле ""KEY"" ввести **CONTENT-TYPE**, в поле ""VALUE"" ввести **application/xml** и нажать **Отправить** 
+
+(невалидное значение в заголовоке)
+Expected Result:
+В теле ответа отображается результат:
+
+**{ ""reason"": ""Bad credentials"" }**
+
+и код состояния HTTP 400
+5. Нажать ""Headers"", в поле ""KEY"" ввести **CONTENT-TYPE**, в поле ""VALUE"" ввести **APPLICATION/JSON** и нажать **Отправить** 
+
+(пробел в конце **CONTENT-TYPE**)
+Expected Result:
+В теле ответа отображается результат:
+
+**{ ""reason"": ""Bad credentials"" }**
+
+и код состояния HTTP 400","","1. В теле ответа отображается результат: токен (строковое значение) вида
+
+**{ ""token"": ""<значение_токена>"" }**
+
+и код состояния HTTP 200
+2. В теле ответа отображается результат:
+
+**{ ""reason"": ""Bad credentials"" }**
+
+и код состояния HTTP 400
+3. В теле ответа отображается результат:
+
+**{ ""reason"": ""Bad credentials"" }**
+
+и код состояния HTTP 400
+4. В теле ответа отображается результат:
+
+**{ ""reason"": ""Bad credentials"" }**
+
+и код состояния HTTP 400
+5. В теле ответа отображается результат:
+
+**{ ""reason"": ""Bad credentials"" }**
+
+и код состояния HTTP 400","1. Нажать ""Headers"", в поле ""KEY"" ввести **CONTENT-TYPE**, в поле ""VALUE"" ввести **APPLICATION/JSON** и нажать **Отправить**
+
+(регистронезависимость)
+2. Нажать ""Headers"", рядом с заголовком **Content-type** убрать ""галочку"", сделав заголовок неактивным и нажать **Отправить**
+
+(обязательность)
+3. Нажать ""Headers"", в поле ""KEY"" ввести **CONTENT-TYPE**, в поле ""VALUE"" ввести **application** и нажать **Отправить** 
+
+
+(недопустимое значение в заголовоке)
+4. Нажать ""Headers"", в поле ""KEY"" ввести **CONTENT-TYPE**, в поле ""VALUE"" ввести **application/xml** и нажать **Отправить** 
+
+(невалидное значение в заголовоке)
+5. Нажать ""Headers"", в поле ""KEY"" ввести **CONTENT-TYPE**, в поле ""VALUE"" ввести **APPLICATION/JSON** и нажать **Отправить** 
+
+(пробел в конце **CONTENT-TYPE**)","Restful_booker  / Божкова И.В."
+"Перестановка местами параметров в теле","Открыт Postman","Auth","CreateToken","","1. Выбрать метод POST
+2. Ввести URL https://restful-booker.herokuapp.com/auth
+3. В теле ввести **{ ""password"" : ""password123"", ""username"" : ""admin"" }**
+4. Нажать Отправить","","","Restful_booker  / Божкова И.В."
+"Well Formed JSON (корректность синтаксиса JSON)","Открыт Postman 
+Выбран метод POST и введен URL https://restful-booker.herokuapp.com/auth","Auth","CreateToken","1. В теле ввести **{ ""username"" : ""admin"", ""password"" : ""password123"", }** и нажать Отправить (лишняя запятая в конце объекта)
+
+Expected Result:
+В теле ответа отображается результат:
+**Bad Request**
+
+код состояния HTTP 400
+2. В теле ввести **{ ""username"" : ""admin"" ""password"" : ""password123"" }** и нажать Отправить (пропуск запятой в середине объекта)
+Expected Result:
+В теле ответа отображается результат:
+**Bad Request**
+
+код состояния HTTP 400
+3. В теле ввести **{ ""username"" : ""admin"", ""password"" : ""password123""** и нажать Отправить (пропуск фигурной скобки)
+Expected Result:
+В теле ответа отображается результат:
+**Bad Request**
+
+код состояния HTTP 400
+4. В теле ввести **[ ""username"" : ""admin"", ""password"" : ""password123""]** и нажать Отправить (использование квадратных скобок массива)
+Expected Result:
+В теле ответа отображается результат:
+**Bad Request**
+
+код состояния HTTP 400","","1. В теле ответа отображается результат:
+**Bad Request**
+
+код состояния HTTP 400
+2. В теле ответа отображается результат:
+**Bad Request**
+
+код состояния HTTP 400
+3. В теле ответа отображается результат:
+**Bad Request**
+
+код состояния HTTP 400
+4. В теле ответа отображается результат:
+**Bad Request**
+
+код состояния HTTP 400","1. В теле ввести **{ ""username"" : ""admin"", ""password"" : ""password123"", }** и нажать Отправить (лишняя запятая в конце объекта)
+
+2. В теле ввести **{ ""username"" : ""admin"" ""password"" : ""password123"" }** и нажать Отправить (пропуск запятой в середине объекта)
+3. В теле ввести **{ ""username"" : ""admin"", ""password"" : ""password123""** и нажать Отправить (пропуск фигурной скобки)
+4. В теле ввести **[ ""username"" : ""admin"", ""password"" : ""password123""]** и нажать Отправить (использование квадратных скобок массива)","Restful_booker  / Божкова И.В."
+"Подмена типа метода запроса","Открыт Postman.
+Введен URL https://restful-booker.herokuapp.com/auth","Auth","CreateToken","1. Выбрать метод запроса **GET**, в теле ввести **{ ""username"" : ""admin"", ""password"" : ""password123"" }** и нажать **Отправить** (совсем разные типы запросов)
+Expected Result:
+В теле ответа отображается результат:
+**Not Found**
+
+и код состояния HTTP 404
+2. Выбрать метод запроса **PUT**, в теле ввести **{ ""username"" : ""admin"", ""password"" : ""password123"" }** и нажать **Отправить** (схожие типы запросов)
+Expected Result:
+В теле ответа отображается результат:
+**Not Found**
+
+и код состояния HTTP 404","","1. В теле ответа отображается результат:
+**Not Found**
+
+и код состояния HTTP 404
+2. В теле ответа отображается результат:
+**Not Found**
+
+и код состояния HTTP 404","1. Выбрать метод запроса **GET**, в теле ввести **{ ""username"" : ""admin"", ""password"" : ""password123"" }** и нажать **Отправить** (совсем разные типы запросов)
+2. Выбрать метод запроса **PUT**, в теле ввести **{ ""username"" : ""admin"", ""password"" : ""password123"" }** и нажать **Отправить** (схожие типы запросов)","Restful_booker  / Божкова И.В."
+"Проверка параметров URL","Открыт Postman
+Выбран метод запроса **POST**
+","Auth","CreateToken","1. Ввести URL https://restful-booker.herokuapp.com/AUTH и нажать **Отправить** (регистрозависимость)
+Expected Result:
+В теле ответа отображается результат:
+**NOT FOUND**
+
+код ответа 404
+2. Ввести URL https://restful-booker.herokuapp.com/auth и нажать **Отправить** (в слове ""auth"" первую букву напечатать кириллицей)
+Expected Result:
+В теле ответа отображается результат:
+**NOT FOUND**
+
+код ответа 404","","1. В теле ответа отображается результат:
+**NOT FOUND**
+
+код ответа 404
+2. В теле ответа отображается результат:
+**NOT FOUND**
+
+код ответа 404","1. Ввести URL https://restful-booker.herokuapp.com/AUTH и нажать **Отправить** (регистрозависимость)
+2. Ввести URL https://restful-booker.herokuapp.com/auth и нажать **Отправить** (в слове ""auth"" первую букву напечатать кириллицей)","Restful_booker  / Божкова И.В."
+"Получить ID всех бронирований","Открыт Postman","GetBookingIds","Returns the ids of all the bookings that exist within the API. Can take optional query strings to search and return a subset of booking ids.","","1. Выбрать метод **GET**
+2. Ввести URL https://restful-booker.herokuapp.com/booking
+3. Нажать **Отправить**","","","Restful_booker  / Божкова И.В."
+"Получить ID  бронирований с применением фильтров","Открыт Postman
+Выбран метод запроса **GET**
+
+Создано новое бронирование:
+
+**{
+    ""bookingid"": <new_id>,
+    ""booking"": {
+        ""firstname"": ""Ira"",
+        ""lastname"": ""Gorobets"",
+        ""totalprice"": 12089,
+        ""depositpaid"": true,
+        ""bookingdates"": {
+            ""checkin"": ""2023-03-01"",
+            ""checkout"": ""2023-03-05""
+        },
+        ""additionalneeds"": ""Lunch""
+    }
+}**
+
+","GetBookingIds","Returns the ids of all the bookings that exist within the API. Can take optional query strings to search and return a subset of booking ids.","1. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=ira&lastname=gorobets (ввод валидных имени и фамилии)
+Expected Result:
+В теле ответа отображается результат с перечнем **id** бронирований, в которых данные соответствуют поисковому запросу
+
+[ **{
+  ""bookingid"": <номер id>
+    }** ]
+
+код состояния HTTP 200
+2. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=ira (ввод валидного имени)
+Expected Result:
+В теле ответа отображается результат с перечнем **id** бронирований, в которых данные соответствуют поисковому запросу
+
+[ **{
+  ""bookingid"": <номер id>
+    }** ]
+
+код состояния HTTP 200
+
+3. Ввести URL https://restful-booker.herokuapp.com/booking?lastname=gorobets (ввод валидной фамилии)
+Expected Result:
+В теле ответа отображается результат с перечнем **id** бронирований, в которых данные соответствуют поисковому запросу
+
+[ **{
+  ""bookingid"": <номер id>
+    }** ]
+
+код состояния HTTP 200
+4. Ввести URL https://restful-booker.herokuapp.com/booking?checkin=2021-12-15&lastname=2022-05-02 (ввод валидных дат)
+Expected Result:
+В теле ответа отображается результат с перечнем **id** бронирований, в которых данные соответствуют поисковому запросу
+
+[ **{
+  ""bookingid"": <номер id>
+    }** ]
+
+код состояния HTTP 200
+5. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=Ira&lastname=Gorobets и нажать **Отправить** (ввод валидных имени и фамилии с проверкой регистрозависимости значений)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+6. Ввести URL https://restful-booker.herokuapp.com/booking?lastname=gorobets&fisrtname=ira (изменение порядка очередности ключа-значения)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+7. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=gorobets&lastname=ira (перемена местами значений)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+8. Ввести URL https://restful-booker.herokuapp.com/booking?Firstname=ira&Lastname=gorobets (регистрозависимость ключей)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+9. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=ira&lastname= (ввод валидного имени, у фамилии пустое значение)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+10. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=ira, нажать на **Params**, ввести в поле ""KEY"" **lastname**, ввести в поле ""Value"" четыре пробела, нажать **Отправить**
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+11. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=testtesttest (ввод несуществующего имени в БД)
+Expected Result:
+В теле ответа отображается результат
+**NOT FOUND**
+
+код состояния HTTP 404
+12. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=ira&&lastname=gorobets (ошибка в синтаксисе)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400","","1. В теле ответа отображается результат с перечнем **id** бронирований, в которых данные соответствуют поисковому запросу
+
+[ **{
+  ""bookingid"": <номер id>
+    }** ]
+
+код состояния HTTP 200
+2. В теле ответа отображается результат с перечнем **id** бронирований, в которых данные соответствуют поисковому запросу
+
+[ **{
+  ""bookingid"": <номер id>
+    }** ]
+
+код состояния HTTP 200
+
+3. В теле ответа отображается результат с перечнем **id** бронирований, в которых данные соответствуют поисковому запросу
+
+[ **{
+  ""bookingid"": <номер id>
+    }** ]
+
+код состояния HTTP 200
+4. В теле ответа отображается результат с перечнем **id** бронирований, в которых данные соответствуют поисковому запросу
+
+[ **{
+  ""bookingid"": <номер id>
+    }** ]
+
+код состояния HTTP 200
+5. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+6. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+7. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+8. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+9. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+10. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+11. В теле ответа отображается результат
+**NOT FOUND**
+
+код состояния HTTP 404
+12. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400","1. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=ira&lastname=gorobets (ввод валидных имени и фамилии)
+2. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=ira (ввод валидного имени)
+3. Ввести URL https://restful-booker.herokuapp.com/booking?lastname=gorobets (ввод валидной фамилии)
+4. Ввести URL https://restful-booker.herokuapp.com/booking?checkin=2021-12-15&lastname=2022-05-02 (ввод валидных дат)
+5. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=Ira&lastname=Gorobets и нажать **Отправить** (ввод валидных имени и фамилии с проверкой регистрозависимости значений)
+6. Ввести URL https://restful-booker.herokuapp.com/booking?lastname=gorobets&fisrtname=ira (изменение порядка очередности ключа-значения)
+7. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=gorobets&lastname=ira (перемена местами значений)
+8. Ввести URL https://restful-booker.herokuapp.com/booking?Firstname=ira&Lastname=gorobets (регистрозависимость ключей)
+9. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=ira&lastname= (ввод валидного имени, у фамилии пустое значение)
+10. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=ira, нажать на **Params**, ввести в поле ""KEY"" **lastname**, ввести в поле ""Value"" четыре пробела, нажать **Отправить**
+11. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=testtesttest (ввод несуществующего имени в БД)
+12. Ввести URL https://restful-booker.herokuapp.com/booking?firstname=ira&&lastname=gorobets (ошибка в синтаксисе)","Restful_booker  / Божкова И.В."
+"Проверка параметров заголовков запроса","Открыт Postman
+Выбран метод запроса **GET**
+Введен URL https://restful-booker.herokuapp.com/booking
+","GetBookingIds","Returns the ids of all the bookings that exist within the API. Can take optional query strings to search and return a subset of booking ids.","1. Нажать ""Headers"", в поле ""KEY"" ввести **HOST**, в поле ""VALUE"" ввести **<calculated when request is sent>** и нажать **Отправить** (регистронезависимость заголовка)
+Expected Result:
+В теле ответа отображен результат - перечень id всех бронирований:
+
+[ **{ ""bookingid"": <номерid> }, { ""bookingid"": <номерid> }, { ""bookingid"": <номер_id> }** ]
+
+код состояния HTTP 200
+2. Нажать ""Headers"", убрать все галочки с заголовков и нажать **Отправить**
+Expected Result:
+В теле ответа отображен результат:
+Сообщение ""Ошибка в заголовках""
+
+Код состояния HTTP 400
+3. Нажать ""Headers"", в поле ""KEY"" ввести **HOST**, в поле ""VALUE"" ввести **1234567890** и нажать **Отправить** (невалидное значение заголовка)
+Expected Result:
+В теле ответа отображен результат:
+**""Hostname/IP does not match sertificate's altnames""**
+
+Код состояния HTTP 404","","1. В теле ответа отображен результат - перечень id всех бронирований:
+
+[ **{ ""bookingid"": <номерid> }, { ""bookingid"": <номерid> }, { ""bookingid"": <номер_id> }** ]
+
+код состояния HTTP 200
+2. В теле ответа отображен результат:
+Сообщение ""Ошибка в заголовках""
+
+Код состояния HTTP 400
+3. В теле ответа отображен результат:
+**""Hostname/IP does not match sertificate's altnames""**
+
+Код состояния HTTP 404","1. Нажать ""Headers"", в поле ""KEY"" ввести **HOST**, в поле ""VALUE"" ввести **<calculated when request is sent>** и нажать **Отправить** (регистронезависимость заголовка)
+2. Нажать ""Headers"", убрать все галочки с заголовков и нажать **Отправить**
+3. Нажать ""Headers"", в поле ""KEY"" ввести **HOST**, в поле ""VALUE"" ввести **1234567890** и нажать **Отправить** (невалидное значение заголовка)","Restful_booker  / Божкова И.В."
+"Подмена типа метода запроса","Открыт Postman
+Введен URL https://restful-booker.herokuapp.com/booking","GetBookingIds","Returns the ids of all the bookings that exist within the API. Can take optional query strings to search and return a subset of booking ids.","1. Выбрать метод запроса **POST** и нажать **Отправить**
+Expected Result:
+В теле ответа отображается результат:
+**Not Found**
+
+и код состояния HTTP 404","","1. В теле ответа отображается результат:
+**Not Found**
+
+и код состояния HTTP 404","1. Выбрать метод запроса **POST** и нажать **Отправить**","Restful_booker  / Божкова И.В."
+"Получить бронирование по валидному ID","Открыт Postman
+- H 'Accept: application/json'
+","GetBooking","Returns a specific booking based upon the booking id provided","","1. Выбрать метод **GET**
+2. Ввести URL https://restful-booker.herokuapp.com/booking/2
+3. Нажать **Отправить**","","","Restful_booker  / Божкова И.В."
+"Получить бронирование  по невалидному ID","Открыт Postman.
+Выбран метод **GET**
+","GetBooking","Returns a specific booking based upon the booking id provided","1. Ввести URL https://restful-booker.herokuapp.com/booking/0 (значение **0**)
+Expected Result:
+В теле ответа отображется результат:
+
+**NOT FOUND**
+
+Код состояния HTTP 404
+2. Ввести URL https://restful-booker.herokuapp.com/booking/50001 (выше максимального значения существующего номера бронирования)
+Expected Result:
+В теле ответа отображется результат:
+
+**NOT FOUND**
+
+Код состояния HTTP 404
+3. Ввести https://restful-booker.herokuapp.com/booking/2qwerty (использование валидного ID с невалидным набором букв)
+Expected Result:
+В теле ответа отображется результат:
+
+**NOT FOUND**
+
+Код состояния HTTP 404
+4. Ввести URL https://restful-booker.herokuapp.com/booking/2_2?*:%;№()* (использование валидного ID с рандомными символами ASCII)
+Expected Result:
+В теле ответа отображется результат:
+
+**NOT FOUND**
+
+Код состояния HTTP 404
+5. Ввести URL https://restful-booker.herokuapp.com/booking/ 2 (после **booking/** поставить пробел
+Expected Result:
+В теле ответа отображется результат:
+
+**NOT FOUND**
+
+Код состояния HTTP 404
+6. Ввести URL https://restful-booker.herokuapp.com/booking/2 2 (после **booking/2** поставить пробел)
+Expected Result:
+В теле ответа отображется результат:
+
+**NOT FOUND**
+
+Код состояния HTTP 404","","1. В теле ответа отображется результат:
+
+**NOT FOUND**
+
+Код состояния HTTP 404
+2. В теле ответа отображется результат:
+
+**NOT FOUND**
+
+Код состояния HTTP 404
+3. В теле ответа отображется результат:
+
+**NOT FOUND**
+
+Код состояния HTTP 404
+4. В теле ответа отображется результат:
+
+**NOT FOUND**
+
+Код состояния HTTP 404
+5. В теле ответа отображется результат:
+
+**NOT FOUND**
+
+Код состояния HTTP 404
+6. В теле ответа отображется результат:
+
+**NOT FOUND**
+
+Код состояния HTTP 404","1. Ввести URL https://restful-booker.herokuapp.com/booking/0 (значение **0**)
+2. Ввести URL https://restful-booker.herokuapp.com/booking/50001 (выше максимального значения существующего номера бронирования)
+3. Ввести https://restful-booker.herokuapp.com/booking/2qwerty (использование валидного ID с невалидным набором букв)
+4. Ввести URL https://restful-booker.herokuapp.com/booking/2_2?*:%;№()* (использование валидного ID с рандомными символами ASCII)
+5. Ввести URL https://restful-booker.herokuapp.com/booking/ 2 (после **booking/** поставить пробел
+6. Ввести URL https://restful-booker.herokuapp.com/booking/2 2 (после **booking/2** поставить пробел)","Restful_booker  / Божкова И.В."
+"Проверка параметров заголовков запроса","Открыт Postman
+Выбран метод запроса **GET**
+Введен URL https://restful-booker.herokuapp.com/booking/2","GetBooking","Returns a specific booking based upon the booking id provided","1. Нажать ""Headers"", убрать все галочки с заголовков и нажать **Отправить**
+Expected Result:
+В теле ответа отображен результат:
+
+**Bad Request**
+
+Код состояния HTTP 400
+2. Нажать ""Headers"", в поле ""KEY"" ввести **HOST**, в поле ""VALUE"" ввести **<calculated when request is sent>** и нажать **Отправить** (регистронезависимость заголовка)
+Expected Result:
+В теле ответа отображен результат - c информацией о бронировании:
+
+**{ ""firstname"": <""firstname"">, ""lastname"": <""lastname"">, ""totalprice"": <number>, ""depositpaid"": <boolean>, ""bookingdates"": { ""checkin"": <""date"">, ""checkout"": <""date""> } }**
+
+код состояния HTTP 200
+3. Нажать ""Headers"", в поле ""KEY"" ввести **Accept**, в поле ""VALUE"" ввести **application/javascript** и нажать **Отправить** (невалидное значение заголовка)
+Expected Result:
+В теле ответа отображается результат:
+
+**I'm a Teapot**
+
+Код состояния HTTP 418","","1. В теле ответа отображен результат:
+
+**Bad Request**
+
+Код состояния HTTP 400
+2. В теле ответа отображен результат - c информацией о бронировании:
+
+**{ ""firstname"": <""firstname"">, ""lastname"": <""lastname"">, ""totalprice"": <number>, ""depositpaid"": <boolean>, ""bookingdates"": { ""checkin"": <""date"">, ""checkout"": <""date""> } }**
+
+код состояния HTTP 200
+3. В теле ответа отображается результат:
+
+**I'm a Teapot**
+
+Код состояния HTTP 418","1. Нажать ""Headers"", убрать все галочки с заголовков и нажать **Отправить**
+2. Нажать ""Headers"", в поле ""KEY"" ввести **HOST**, в поле ""VALUE"" ввести **<calculated when request is sent>** и нажать **Отправить** (регистронезависимость заголовка)
+3. Нажать ""Headers"", в поле ""KEY"" ввести **Accept**, в поле ""VALUE"" ввести **application/javascript** и нажать **Отправить** (невалидное значение заголовка)","Restful_booker  / Божкова И.В."
+"Подмена типа метода запроса","Открыт Postman
+Введен URL https://restful-booker.herokuapp.com/booking/2","GetBooking","Returns a specific booking based upon the booking id provided","1. Выбрать метод запроса **POST** и нажать **Отправить**
+Expected Result:
+В теле ответа отображается результат:
+
+**Not Found**
+
+и код состояния HTTP 404","","1. В теле ответа отображается результат:
+
+**Not Found**
+
+и код состояния HTTP 404","1. Выбрать метод запроса **POST** и нажать **Отправить**","Restful_booker  / Божкова И.В."
+"Создание нового бронирования с валидными данными","Открыт Postman.
+
+-H 'Content-Type: application/json'
+   'Accept: application/json'
+
+URL - https://restful-booker.herokuapp.com/booking
+
+","CreateBooking","Creates a new booking in the API","1. Выбрать метод запроса **POST** и в теле запроса ввести 
+**{
+""firstname"" : ""Ira354*&^%"",
+""lastname"" : ""Gorobets8465 %%&*("",
+""totalprice"" : 120.78,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch564*%""?*""
+}**
+
+Expected Result:
+В теле ответа отображается результат:
+
+**{
+    ""bookingid"": <newbooking_id>,
+    ""booking"": {
+        ""firstname"": ""Ira354*&^%"",
+        ""lastname"": ""Gorobets8465 %%&*("",
+        ""totalprice"": 120.78,
+        ""depositpaid"": true,
+        ""bookingdates"": {
+            ""checkin"": ""2023-03-01"",
+            ""checkout"": ""2023-03-05""
+        },
+        ""additionalneeds"": ""Lunch564*%""?*""
+    }
+}**
+
+Код состояния HTTP 200
+2. Скопировать значение <newbooking_id> из тела ответа в строку URL (URL принимает вид https://restful-booker.herokuapp.com/booking/<newbooking_id>), изменить метод запроса на **GET** и нажать **Отправить**
+Expected Result:
+В теле ответа отображается результат:
+
+**{
+    ""firstname"": ""Ira354*&^%"""",
+    ""lastname"": ""Gorobets8465 %%&*("",
+    ""totalprice"": 120.78,
+    ""depositpaid"": true,
+    ""bookingdates"": {
+        ""checkin"": ""2023-03-01"",
+        ""checkout"": ""2023-03-05""
+    },
+    ""additionalneeds"": ""Lunch564*%""?*""
+}**
+
+код состояния HTTP 200","","1. В теле ответа отображается результат:
+
+**{
+    ""bookingid"": <newbooking_id>,
+    ""booking"": {
+        ""firstname"": ""Ira354*&^%"",
+        ""lastname"": ""Gorobets8465 %%&*("",
+        ""totalprice"": 120.78,
+        ""depositpaid"": true,
+        ""bookingdates"": {
+            ""checkin"": ""2023-03-01"",
+            ""checkout"": ""2023-03-05""
+        },
+        ""additionalneeds"": ""Lunch564*%""?*""
+    }
+}**
+
+Код состояния HTTP 200
+2. В теле ответа отображается результат:
+
+**{
+    ""firstname"": ""Ira354*&^%"""",
+    ""lastname"": ""Gorobets8465 %%&*("",
+    ""totalprice"": 120.78,
+    ""depositpaid"": true,
+    ""bookingdates"": {
+        ""checkin"": ""2023-03-01"",
+        ""checkout"": ""2023-03-05""
+    },
+    ""additionalneeds"": ""Lunch564*%""?*""
+}**
+
+код состояния HTTP 200","1. Выбрать метод запроса **POST** и в теле запроса ввести 
+**{
+""firstname"" : ""Ira354*&^%"",
+""lastname"" : ""Gorobets8465 %%&*("",
+""totalprice"" : 120.78,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch564*%""?*""
+}**
+
+2. Скопировать значение <newbooking_id> из тела ответа в строку URL (URL принимает вид https://restful-booker.herokuapp.com/booking/<newbooking_id>), изменить метод запроса на **GET** и нажать **Отправить**","Restful_booker  / Божкова И.В."
+"Создание нового бронирования, используя недопустимые данные","Открыт Postman
+ 
+Выбран метод **POST**
+Введен URL https://restful-booker.herokuapp.com/booking
+
+-H 'Content-Type: application/json'
+'Accept: application/json'
+
+","CreateBooking","Creates a new booking in the API","1. Ввести в тело запроса
+
+**{
+""firstname"" : """",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(пустое значение)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+2. Ввести в тело запроса
+
+**{
+""firstname"" : ""  "",
+""lastname"" : ""  "",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(пробелы в значениях)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+3. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : asdfg,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(вместо типа **Number** использование типа **String**)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+4. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : -120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(в типе **Number** использование отрицательного числа)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+5. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,89,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(в типе **Number** использование запятой как разделителя)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+6. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : yes,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(вместо типа **Boolean** использование типа **String**)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+7. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : 10,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(вместо типа **Boolean** использование типа **Number**)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+8. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023/03/01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(в типе **Data** использование **/**)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+9. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""20230305""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(в типе **Data** недопустимый формат даты)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+10. Ввести в тело запроса
+
+**{
+""FIRSTNAME"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""20230305""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(регистрозависимость ключа)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+11. Ввести в тело запроса
+
+**{
+""mynameis"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""20230305""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(несуществующий ключ)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+12. Ввести в тело запроса
+
+**{
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""20230305""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(отсутствие обязательного параметра)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+13. Ввести в тело запроса
+
+**{
+""firstname"" : null,
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(значение **null** )
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+14. Ввести в тело запроса
+
+**{
+""firstname"" : ""_Irina_GR_"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(в значении имени пробелмы перед именем, в середине, после имени)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+15. Ввести в тело запроса
+
+1. **{ 
+""firstname"" : """"1 or 1"""",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+2. **{ 
+""firstname"" : ""Irina"",
+""lastname"" : """"1 or 1"""",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+3. **{ 
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : """"1 or 1""""
+}**
+
+
+(SQL injection)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+16. Ввести в тело запроса
+
+1. **{ 
+""firstname"" : ""<script><script>"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+2. **{ 
+""firstname"" : ""Irina"",
+""lastname"" : ""<script><script>"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+3. **{ 
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""<script><script>""
+}**
+
+
+(XSS injection)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+17. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(в типе **Data** указана неполное значение даты)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+18. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-March-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(в типе **Data** использование типа **String** в значении)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400","","1. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+2. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+3. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+4. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+5. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+6. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+7. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+8. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+9. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+10. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+11. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+12. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+13. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+14. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+15. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+16. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+17. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+18. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400","1. Ввести в тело запроса
+
+**{
+""firstname"" : """",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(пустое значение)
+2. Ввести в тело запроса
+
+**{
+""firstname"" : ""  "",
+""lastname"" : ""  "",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(пробелы в значениях)
+3. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : asdfg,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(вместо типа **Number** использование типа **String**)
+4. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : -120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(в типе **Number** использование отрицательного числа)
+5. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,89,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(в типе **Number** использование запятой как разделителя)
+6. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : yes,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(вместо типа **Boolean** использование типа **String**)
+7. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : 10,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(вместо типа **Boolean** использование типа **Number**)
+8. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023/03/01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(в типе **Data** использование **/**)
+9. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""20230305""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(в типе **Data** недопустимый формат даты)
+10. Ввести в тело запроса
+
+**{
+""FIRSTNAME"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""20230305""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(регистрозависимость ключа)
+11. Ввести в тело запроса
+
+**{
+""mynameis"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""20230305""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(несуществующий ключ)
+12. Ввести в тело запроса
+
+**{
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""20230305""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(отсутствие обязательного параметра)
+13. Ввести в тело запроса
+
+**{
+""firstname"" : null,
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(значение **null** )
+14. Ввести в тело запроса
+
+**{
+""firstname"" : ""_Irina_GR_"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(в значении имени пробелмы перед именем, в середине, после имени)
+15. Ввести в тело запроса
+
+1. **{ 
+""firstname"" : """"1 or 1"""",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+2. **{ 
+""firstname"" : ""Irina"",
+""lastname"" : """"1 or 1"""",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+3. **{ 
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : """"1 or 1""""
+}**
+
+
+(SQL injection)
+16. Ввести в тело запроса
+
+1. **{ 
+""firstname"" : ""<script><script>"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+2. **{ 
+""firstname"" : ""Irina"",
+""lastname"" : ""<script><script>"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+3. **{ 
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""<script><script>""
+}**
+
+
+(XSS injection)
+17. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(в типе **Data** указана неполное значение даты)
+18. Ввести в тело запроса
+
+**{
+""firstname"" : ""Irina"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-March-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+(в типе **Data** использование типа **String** в значении)","Restful_booker  / Божкова И.В."
+"Проверка параметров заголовков запроса","Открыт Postman
+Введен URL https://restful-booker.herokuapp.com/booking
+
+
+В теле запроса:
+**{
+""firstname"" : ""Ira"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**","CreateBooking","Creates a new booking in the API","1. Нажать ""Headers"", в поле ""KEY"" ввести **ACCEPT**, в поле ""VALUE"" ввести **APPLICATION/XML** и нажать **Отправить**
+
+(альтернативаное валидное значение в заголовке, регистронезависимость ключа и значения)
+Expected Result:
+В теле ответа отображается результат:
+
+**<?xml version='1.0'?>
+<created-booking>
+	<bookingid>{новый_id}</bookingid>
+	<booking>
+		<firstname>Ira</firstname>
+		<lastname>Gorobets</lastname>
+		<totalprice>120</totalprice>
+		<depositpaid>true</depositpaid>
+		<bookingdates>
+			<checkin>2023-03-01</checkin>
+			<checkout>2023-03-05</checkout>
+		</bookingdates>
+		<additionalneeds>Lunch</additionalneeds>
+	</booking>
+</created-booking>**
+
+Код состояния HTTP 200
+2. Нажать ""Headers"", рядом с заголовком **Content-type** и **Accept** убрать ""галочку"", сделав заголовки неактивными, и нажать **Отправить**
+
+(обязательность)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+3. Нажать ""Headers"", в поле ""KEY"" ввести **CONTENT-TYPE**, в поле ""VALUE"" ввести **application** и нажать **Отправить**
+
+(недопустимое значение в заголовке)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+4. Нажать ""Headers"", в поле ""KEY"" ввести CONTENT-TYPE, в поле ""VALUE"" ввести **application/xml** и нажать **Отправить**
+
+(невалидное значение в заголовке)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400","","1. В теле ответа отображается результат:
+
+**<?xml version='1.0'?>
+<created-booking>
+	<bookingid>{новый_id}</bookingid>
+	<booking>
+		<firstname>Ira</firstname>
+		<lastname>Gorobets</lastname>
+		<totalprice>120</totalprice>
+		<depositpaid>true</depositpaid>
+		<bookingdates>
+			<checkin>2023-03-01</checkin>
+			<checkout>2023-03-05</checkout>
+		</bookingdates>
+		<additionalneeds>Lunch</additionalneeds>
+	</booking>
+</created-booking>**
+
+Код состояния HTTP 200
+2. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+3. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+4. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400","1. Нажать ""Headers"", в поле ""KEY"" ввести **ACCEPT**, в поле ""VALUE"" ввести **APPLICATION/XML** и нажать **Отправить**
+
+(альтернативаное валидное значение в заголовке, регистронезависимость ключа и значения)
+2. Нажать ""Headers"", рядом с заголовком **Content-type** и **Accept** убрать ""галочку"", сделав заголовки неактивными, и нажать **Отправить**
+
+(обязательность)
+3. Нажать ""Headers"", в поле ""KEY"" ввести **CONTENT-TYPE**, в поле ""VALUE"" ввести **application** и нажать **Отправить**
+
+(недопустимое значение в заголовке)
+4. Нажать ""Headers"", в поле ""KEY"" ввести CONTENT-TYPE, в поле ""VALUE"" ввести **application/xml** и нажать **Отправить**
+
+(невалидное значение в заголовке)","Restful_booker  / Божкова И.В."
+"Отправить запрос без параметров в теле","Открыт Postman
+
+Выбран метод запроса **POST**
+
+-H 'Content-Type: application/json","CreateBooking","Creates a new booking in the API","1. Ввести URL - https://restful-booker.herokuapp.com/booking и нажать **Отправить**
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400","","1. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400","1. Ввести URL - https://restful-booker.herokuapp.com/booking и нажать **Отправить**","Restful_booker  / Божкова И.В."
+"Перестановка местами параметров в теле запроса","Открыт Postman
+Выбран метод запроса **POST**
+Введен URL - https://restful-booker.herokuapp.com/booking","CreateBooking","Creates a new booking in the API","","1. В теле запроса ввести 
+**{
+""lastname"" : ""Gorobets"",
+""firstname"" : ""Ira"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+
+","","","Restful_booker  / Божкова И.В."
+"Well Formed JSON (корректность синтаксиса JSON)","Открыт Postman
+Выбран метод запроса **POST**
+Введен URL - https://restful-booker.herokuapp.com/booking","CreateBooking","Creates a new booking in the API","1. В теле запроса ввести **{ ""lastname"" : ""Gorobets"", ""firstname"" : ""Ira"", ""totalprice"" : 120, ""depositpaid"" : true, ""bookingdates"" : { ""checkin"" : ""2023-03-01"", ""checkout"" : ""2023-03-05"" }, ""additionalneeds"" : ""Lunch"", }** и нажать **Отправить**
+
+(лишняя запятая в конце объекта)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+2. В теле запроса ввести **{ ""lastname"" : ""Gorobets"" ""firstname"" : ""Ira"", ""totalprice"" : 120, ""depositpaid"" : true, ""bookingdates"" : { ""checkin"" : ""2023-03-01"", ""checkout"" : ""2023-03-05"" }, ""additionalneeds"" : ""Lunch"" }** и нажать **Отправить**
+
+(пропуск запятой в середине объекта)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+3. В теле запроса ввести **{ ""lastname"" : ""Gorobets"", ""firstname"" : ""Ira"", ""totalprice"" : 120, ""depositpaid"" : true, ""bookingdates"" : { ""checkin"" : ""2023-03-01"", ""checkout"" : ""2023-03-05"" }, ""additionalneeds"" : ""Lunch"" ** и нажать **Отправить**
+
+(пропуск фигурной скобки объекта)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+4. В теле запроса ввести **[""lastname"" : ""Gorobets"", ""firstname"" : ""Ira"", ""totalprice"" : 120, ""depositpaid"" : true, ""bookingdates"" : { ""checkin"" : ""2023-03-01"", ""checkout"" : ""2023-03-05"" }, ""additionalneeds"" : ""Lunch""] ** и нажать **Отправить**
+
+(использование квадратных скобок массива)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400","","1. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+2. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+3. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+4. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400","1. В теле запроса ввести **{ ""lastname"" : ""Gorobets"", ""firstname"" : ""Ira"", ""totalprice"" : 120, ""depositpaid"" : true, ""bookingdates"" : { ""checkin"" : ""2023-03-01"", ""checkout"" : ""2023-03-05"" }, ""additionalneeds"" : ""Lunch"", }** и нажать **Отправить**
+
+(лишняя запятая в конце объекта)
+2. В теле запроса ввести **{ ""lastname"" : ""Gorobets"" ""firstname"" : ""Ira"", ""totalprice"" : 120, ""depositpaid"" : true, ""bookingdates"" : { ""checkin"" : ""2023-03-01"", ""checkout"" : ""2023-03-05"" }, ""additionalneeds"" : ""Lunch"" }** и нажать **Отправить**
+
+(пропуск запятой в середине объекта)
+3. В теле запроса ввести **{ ""lastname"" : ""Gorobets"", ""firstname"" : ""Ira"", ""totalprice"" : 120, ""depositpaid"" : true, ""bookingdates"" : { ""checkin"" : ""2023-03-01"", ""checkout"" : ""2023-03-05"" }, ""additionalneeds"" : ""Lunch"" ** и нажать **Отправить**
+
+(пропуск фигурной скобки объекта)
+4. В теле запроса ввести **[""lastname"" : ""Gorobets"", ""firstname"" : ""Ira"", ""totalprice"" : 120, ""depositpaid"" : true, ""bookingdates"" : { ""checkin"" : ""2023-03-01"", ""checkout"" : ""2023-03-05"" }, ""additionalneeds"" : ""Lunch""] ** и нажать **Отправить**
+
+(использование квадратных скобок массива)","Restful_booker  / Божкова И.В."
+"Подмена типа метода запроса","Открыт Postman
+Введен URL https://restful-booker.herokuapp.com/booking
+
+В теле запроса введен:
+**{ ""lastname"" : ""Gorobets"", ""firstname"" : ""Ira"", ""totalprice"" : 120, ""depositpaid"" : true, ""bookingdates"" : { ""checkin"" : ""2023-03-01"", ""checkout"" : ""2023-03-05"" }, ""additionalneeds"" : ""Lunch"" }**","CreateBooking","Creates a new booking in the API","1. Выбрать метод запроса **PUT** и нажать **Отправить**
+
+(схожие типы запросов)
+Expected Result:
+В теле ответа отображается результат:
+
+**Not Found**
+
+и код состояния HTTP 404","","1. В теле ответа отображается результат:
+
+**Not Found**
+
+и код состояния HTTP 404","1. Выбрать метод запроса **PUT** и нажать **Отправить**
+
+(схожие типы запросов)","Restful_booker  / Божкова И.В."
+"Проверка параметров URL","Открыт Postman
+Выбран метод запроса **Post**
+Введен URL https://restful-booker.herokuapp.com/booking
+
+В теле запроса введен 
+**{
+""lastname"" : ""Gorobets"",
+""firstname"" : ""Ira"",
+""totalprice"" : 120,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**","CreateBooking","Creates a new booking in the API","1. Выбрать **Params**, в поле ""KEY"" ввести **id**, в поле ""VALUE"" ввести **123** и нажать **Отправить**
+
+(недопустимые параметры в URL)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400","","1. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400","1. Выбрать **Params**, в поле ""KEY"" ввести **id**, в поле ""VALUE"" ввести **123** и нажать **Отправить**
+
+(недопустимые параметры в URL)","Restful_booker  / Божкова И.В."
+"Обновить текущее бронирование, используя валидные данные","Открыт Postman
+
+-H 'Content-Type: application/json
+  -H 'Accept: application/json
+  -H 'Cookie: token=<валидный_токен>
+
+","UpdateBooking","Updates a current booking and with a partial payload","1. 1. Выбрать метод **PUT**
+2. Ввести URL https://restful-booker.herokuapp.com/booking/2
+3. В теле ввести 
+**{
+""firstname"": ""Irina"",
+""lastname"": ""Bozhkova"",
+""totalprice"": 120,
+""depositpaid"": false,
+""bookingdates"": {
+""checkin"": ""2023-03-02"",
+""checkout"": ""2023-03-07""
+},
+""additionalneeds"": ""Breakfast""
+}**
+4. Нажать **Отправить**
+Expected Result:
+В теле ответа отображается результат
+
+**{
+    ""firstname"": ""Irina"",
+    ""lastname"": ""Bozhkova"",
+    ""totalprice"": 120,
+    ""depositpaid"": false,
+    ""bookingdates"": {
+        ""checkin"": ""2023-03-02"",
+        ""checkout"": ""2023-03-07""
+    },
+    ""additionalneeds"": ""Breakfast""
+}**
+
+код состояния HTTP 200
+2. 1. Ввести URL https://restful-booker.herokuapp.com/booking/2
+2. Изменить метод запроса на **GET** 
+3. Нажать **Отправить**
+Expected Result:
+В теле ответа отображается результат
+
+**{
+    ""firstname"": ""Irina"",
+    ""lastname"": ""Bozhkova"",
+    ""totalprice"": 120,
+    ""depositpaid"": false,
+    ""bookingdates"": {
+        ""checkin"": ""2023-03-02"",
+        ""checkout"": ""2023-03-07""
+    },
+    ""additionalneeds"": ""Breakfast""
+}**
+
+код состояния HTTP 200","","1. В теле ответа отображается результат
+
+**{
+    ""firstname"": ""Irina"",
+    ""lastname"": ""Bozhkova"",
+    ""totalprice"": 120,
+    ""depositpaid"": false,
+    ""bookingdates"": {
+        ""checkin"": ""2023-03-02"",
+        ""checkout"": ""2023-03-07""
+    },
+    ""additionalneeds"": ""Breakfast""
+}**
+
+код состояния HTTP 200
+2. В теле ответа отображается результат
+
+**{
+    ""firstname"": ""Irina"",
+    ""lastname"": ""Bozhkova"",
+    ""totalprice"": 120,
+    ""depositpaid"": false,
+    ""bookingdates"": {
+        ""checkin"": ""2023-03-02"",
+        ""checkout"": ""2023-03-07""
+    },
+    ""additionalneeds"": ""Breakfast""
+}**
+
+код состояния HTTP 200","1. 1. Выбрать метод **PUT**
+2. Ввести URL https://restful-booker.herokuapp.com/booking/2
+3. В теле ввести 
+**{
+""firstname"": ""Irina"",
+""lastname"": ""Bozhkova"",
+""totalprice"": 120,
+""depositpaid"": false,
+""bookingdates"": {
+""checkin"": ""2023-03-02"",
+""checkout"": ""2023-03-07""
+},
+""additionalneeds"": ""Breakfast""
+}**
+4. Нажать **Отправить**
+2. 1. Ввести URL https://restful-booker.herokuapp.com/booking/2
+2. Изменить метод запроса на **GET** 
+3. Нажать **Отправить**","Restful_booker  / Божкова И.В."
+"Частично обновить текущее бронирование","Открыт Postman
+
+-H 'Content-Type: application/json
+-H 'Accept: application/json
+-H 'Cookie: token=<валидный_токен>
+
+Создано новое бронирование:
+
+**{
+    ""bookingid"": <new_id>,
+    ""booking"": {
+        ""firstname"": ""Ira"",
+        ""lastname"": ""Gorobets"",
+        ""totalprice"": 120,
+        ""depositpaid"": true,
+        ""bookingdates"": {
+            ""checkin"": ""2023-03-01"",
+            ""checkout"": ""2023-03-05""
+        },
+        ""additionalneeds"": ""Lunch""
+    }
+}**
+ 
+где <new_id> - присвоенный id новому бронированию
+","UpdateBooking","Updates a current booking and with a partial payload","1. 1. Выбрать метод PATCH
+2. Ввести URL https://restful-booker.herokuapp.com/booking/:new_id
+3. В теле ввести **{
+""firstname"": ""Iraine;%:657"",
+""lastname"": ""Jones354?:*("",
+""additionalneeds"": ""Lunch123:%;""
+}**
+Expected Result:
+В теле ответа отображается результат:
+
+**{
+    ""firstname"": ""Iraine;%:657"",
+    ""lastname"": ""Jones354?:*("",
+    ""totalprice"": 120,
+    ""depositpaid"": true,
+    ""bookingdates"": {
+        ""checkin"": ""2023-03-01"",
+        ""checkout"": ""2023-03-05""
+    },
+    ""additionalneeds"": ""Lunch123:%;""
+}**
+
+код состояния HTTP 200
+2. 1. Ввести URL https://restful-booker.herokuapp.com/booking/:new_id
+2. Изменить метод запроса на **GET** 
+3. Нажать **Отправить**
+Expected Result:
+В теле ответа отображается результат:
+
+**{
+    ""firstname"": ""Iraine;%:657"",
+    ""lastname"": ""Jones354?:*("",
+    ""totalprice"": 120,
+    ""depositpaid"": true,
+    ""bookingdates"": {
+        ""checkin"": ""2023-03-01"",
+        ""checkout"": ""2023-03-05""
+    },
+    ""additionalneeds"": ""Lunch123:%;""
+}**
+
+код состояния HTTP 200","","1. В теле ответа отображается результат:
+
+**{
+    ""firstname"": ""Iraine;%:657"",
+    ""lastname"": ""Jones354?:*("",
+    ""totalprice"": 120,
+    ""depositpaid"": true,
+    ""bookingdates"": {
+        ""checkin"": ""2023-03-01"",
+        ""checkout"": ""2023-03-05""
+    },
+    ""additionalneeds"": ""Lunch123:%;""
+}**
+
+код состояния HTTP 200
+2. В теле ответа отображается результат:
+
+**{
+    ""firstname"": ""Iraine;%:657"",
+    ""lastname"": ""Jones354?:*("",
+    ""totalprice"": 120,
+    ""depositpaid"": true,
+    ""bookingdates"": {
+        ""checkin"": ""2023-03-01"",
+        ""checkout"": ""2023-03-05""
+    },
+    ""additionalneeds"": ""Lunch123:%;""
+}**
+
+код состояния HTTP 200","1. 1. Выбрать метод PATCH
+2. Ввести URL https://restful-booker.herokuapp.com/booking/:new_id
+3. В теле ввести **{
+""firstname"": ""Iraine;%:657"",
+""lastname"": ""Jones354?:*("",
+""additionalneeds"": ""Lunch123:%;""
+}**
+2. 1. Ввести URL https://restful-booker.herokuapp.com/booking/:new_id
+2. Изменить метод запроса на **GET** 
+3. Нажать **Отправить**","Restful_booker  / Божкова И.В."
+"Обновить текущее бронирование, используя недопустимые данные","Открыт Postman
+
+Выбран метод запроса **PUT**
+Введен URL https://restful-booker.herokuapp.com/booking/2
+
+-H 'Content-Type: application/json
+-H 'Accept: application/json
+-H 'Cookie: token=<валидный_токен>","UpdateBooking","Updates a current booking and with a partial payload","1. В теле запроса ввести
+ 
+**{ ""firstname"": """", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(пустое значение)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+2. В теле запроса ввести
+ 
+**{ ""firstname"": ""  "", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(пробелы в значении)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+3. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": yes, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(вместо типа **Boolean** использование типа **String**)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+4. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": 10, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(вместо типа **Boolean** использование типа **Number**)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+5. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": abcd&^, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(вместо типа **Number** использование типа **String**)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+6. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023/03/02"", ""checkout"": ""2023/03/07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(в типе **Data** использование **/**)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+7. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""20230302"", ""checkout"": ""20230307"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(в типе **Data** все слитно)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+8. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""20230302"", ""checkout"": ""2023-03"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(в типе **Data** указана неполная дата)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+9. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-March-01"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(в типе **Data** использование типа **String** в значении)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+10. В теле запроса ввести
+ 
+**{ ""FIRSTNAME"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(регистрозависимость ключа)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+11. В теле запроса ввести
+ 
+**{ ""mynameis"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(несуществующий ключ)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+12. В теле запроса ввести
+ 
+**{ ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(отсутствие обязательного параметра)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+13. В теле запроса ввести
+ 
+**{ ""firstname"": ""null"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(использование значения **null**)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+14. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": -120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(в типе **Number** использование отрицательного числа)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+15. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120.70, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(в типе **Number** использование запятой как разделителя)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+16. В теле запроса ввести
+ 
+**{ ""firstname"": ""_Irina_Gr_ "", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(пробелы в значении перед именем, в середине, после имени)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+17. В теле запроса ввести:
+ 
+1. **{ ""firstname"": """"1 or 1"""", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+2. **{ ""firstname"": ""Irina"", ""lastname"": """"1 or 1"""", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+3. **{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": """"1 or 1"""" }**
+
+(SQL injection)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+18. В теле запроса ввести:
+ 
+1. **{ ""firstname"": ""<script><script>"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+2. **{ ""firstname"": ""Irina"", ""lastname"": ""<script><script>"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+3. **{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""<script><script>"" }**
+
+(XSS injection)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400","","1. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+2. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+3. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+4. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+5. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+6. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+7. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+8. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+9. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+10. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+11. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+12. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+13. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+14. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+15. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+16. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+17. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+18. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400","1. В теле запроса ввести
+ 
+**{ ""firstname"": """", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(пустое значение)
+2. В теле запроса ввести
+ 
+**{ ""firstname"": ""  "", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(пробелы в значении)
+3. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": yes, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(вместо типа **Boolean** использование типа **String**)
+4. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": 10, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(вместо типа **Boolean** использование типа **Number**)
+5. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": abcd&^, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(вместо типа **Number** использование типа **String**)
+6. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023/03/02"", ""checkout"": ""2023/03/07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(в типе **Data** использование **/**)
+7. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""20230302"", ""checkout"": ""20230307"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(в типе **Data** все слитно)
+8. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""20230302"", ""checkout"": ""2023-03"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(в типе **Data** указана неполная дата)
+9. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-March-01"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(в типе **Data** использование типа **String** в значении)
+10. В теле запроса ввести
+ 
+**{ ""FIRSTNAME"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(регистрозависимость ключа)
+11. В теле запроса ввести
+ 
+**{ ""mynameis"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(несуществующий ключ)
+12. В теле запроса ввести
+ 
+**{ ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(отсутствие обязательного параметра)
+13. В теле запроса ввести
+ 
+**{ ""firstname"": ""null"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(использование значения **null**)
+14. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": -120, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(в типе **Number** использование отрицательного числа)
+15. В теле запроса ввести
+ 
+**{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120.70, ""depositpaid"": true, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(в типе **Number** использование запятой как разделителя)
+16. В теле запроса ввести
+ 
+**{ ""firstname"": ""_Irina_Gr_ "", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+(пробелы в значении перед именем, в середине, после имени)
+17. В теле запроса ввести:
+ 
+1. **{ ""firstname"": """"1 or 1"""", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+2. **{ ""firstname"": ""Irina"", ""lastname"": """"1 or 1"""", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+3. **{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": """"1 or 1"""" }**
+
+(SQL injection)
+18. В теле запроса ввести:
+ 
+1. **{ ""firstname"": ""<script><script>"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+2. **{ ""firstname"": ""Irina"", ""lastname"": ""<script><script>"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""Breakfast"" }**
+
+3. **{ ""firstname"": ""Irina"", ""lastname"": ""Bozhkova"", ""totalprice"": 120, ""depositpaid"": false, ""bookingdates"": { ""checkin"": ""2023-03-02"", ""checkout"": ""2023-03-07"" }, ""additionalneeds"": ""<script><script>"" }**
+
+(XSS injection)","Restful_booker  / Божкова И.В."
+"Проверка параметров заголовков запроса","Открыт Postman
+Введен URL https://restful-booker.herokuapp.com/booking/2
+
+Выбран метод запроса **PUT**
+
+-H 'Content-Type: application/json
+  -H 'Accept: application/json
+  -H 'Cookie: token=<валидный_токен>
+
+Тело запроса: **{
+""lastname"" : ""Gorobets"",
+""firstname"" : ""Ira"",
+""totalprice"" : 12089,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**
+","UpdateBooking","Updates a current booking and with a partial payload","1. Нажать ""Headers"", в поле ""KEY"" ввести **ACCEPT**, в поле ""VALUE"" ввести **APPLICATION/XML** и нажать **Отправить**
+
+(альтернативаное валидное значение в заголовке, регистронезависимость ключа и значения)
+Expected Result:
+В теле ответа отображается результат:
+
+**<?xml version='1.0'?>
+<booking>
+	<firstname>Ira</firstname>
+	<lastname>Gorobets</lastname>
+	<totalprice>12089</totalprice>
+	<depositpaid>true</depositpaid>
+	<bookingdates>
+		<checkin>2023-03-01</checkin>
+		<checkout>2023-03-05</checkout>
+	</bookingdates>
+	<additionalneeds>Lunch</additionalneeds>
+</booking>**
+
+код состояния HTTP 200
+2. Нажать ""Headers"", рядом с заголовком **Content-type**, **Accept** убрать ""галочку"", сделав заголовки неактивными, и нажать **Отправить**
+
+(обязательность)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+3. Нажать ""Headers"", в поле ""KEY"" ввести **CONTENT-TYPE**, в поле ""VALUE"" ввести **application** и нажать Отправить
+
+(недопустимое значение в заголовке)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+4. Нажать ""Headers"", в поле ""KEY"" ввести **CONTENT-TYPE**, в поле ""VALUE"" ввести **application/xml** и нажать **Отправить**
+
+(невалидное значение в заголовке)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+5. В ""Headers"" убрать галочку с заголовка **Cookie** и нажать **Отправить** (Basic Auth не активна)
+
+(без заголовков авторизации)
+Expected Result:
+В теле ответа отображается результат:
+
+**Forbidden**
+
+и код состояния HTTP 403
+6. 1. В ""Authorization"" выбрать способ аутентификации ""Basic Auth""
+2. В поле **Username** ввести **admin**, в поле **password** ввести **password123**
+3. В ""Headers"" убрать галочку с заголовка **Cookie**
+
+
+(альтернативный заголовок авторизации)
+Expected Result:
+**{
+    ""firstname"": ""Ira"",
+    ""lastname"": ""Gorobets"",
+    ""totalprice"": 12089,
+    ""depositpaid"": true,
+    ""bookingdates"": {
+        ""checkin"": ""2023-03-01"",
+        ""checkout"": ""2023-03-05""
+    },
+    ""additionalneeds"": ""Lunch""
+}**
+
+код состояния HTTP 200","","1. В теле ответа отображается результат:
+
+**<?xml version='1.0'?>
+<booking>
+	<firstname>Ira</firstname>
+	<lastname>Gorobets</lastname>
+	<totalprice>12089</totalprice>
+	<depositpaid>true</depositpaid>
+	<bookingdates>
+		<checkin>2023-03-01</checkin>
+		<checkout>2023-03-05</checkout>
+	</bookingdates>
+	<additionalneeds>Lunch</additionalneeds>
+</booking>**
+
+код состояния HTTP 200
+2. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+3. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+4. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400
+5. В теле ответа отображается результат:
+
+**Forbidden**
+
+и код состояния HTTP 403
+6. **{
+    ""firstname"": ""Ira"",
+    ""lastname"": ""Gorobets"",
+    ""totalprice"": 12089,
+    ""depositpaid"": true,
+    ""bookingdates"": {
+        ""checkin"": ""2023-03-01"",
+        ""checkout"": ""2023-03-05""
+    },
+    ""additionalneeds"": ""Lunch""
+}**
+
+код состояния HTTP 200","1. Нажать ""Headers"", в поле ""KEY"" ввести **ACCEPT**, в поле ""VALUE"" ввести **APPLICATION/XML** и нажать **Отправить**
+
+(альтернативаное валидное значение в заголовке, регистронезависимость ключа и значения)
+2. Нажать ""Headers"", рядом с заголовком **Content-type**, **Accept** убрать ""галочку"", сделав заголовки неактивными, и нажать **Отправить**
+
+(обязательность)
+3. Нажать ""Headers"", в поле ""KEY"" ввести **CONTENT-TYPE**, в поле ""VALUE"" ввести **application** и нажать Отправить
+
+(недопустимое значение в заголовке)
+4. Нажать ""Headers"", в поле ""KEY"" ввести **CONTENT-TYPE**, в поле ""VALUE"" ввести **application/xml** и нажать **Отправить**
+
+(невалидное значение в заголовке)
+5. В ""Headers"" убрать галочку с заголовка **Cookie** и нажать **Отправить** (Basic Auth не активна)
+
+(без заголовков авторизации)
+6. 1. В ""Authorization"" выбрать способ аутентификации ""Basic Auth""
+2. В поле **Username** ввести **admin**, в поле **password** ввести **password123**
+3. В ""Headers"" убрать галочку с заголовка **Cookie**
+
+
+(альтернативный заголовок авторизации)","Restful_booker  / Божкова И.В."
+"Отправить запрос без параметров в теле","Открыт Postman
+
+Выбран метод запроса **PUT**
+
+-H 'Content-Type: application/json
+-H 'Accept: application/json
+-H 'Cookie: token=<валидный_токен>","UpdateBooking","Updates a current booking and with a partial payload","1. Ввести URL - https://restful-booker.herokuapp.com/booking/2 и нажать **Отправить**
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400","","1. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400","1. Ввести URL - https://restful-booker.herokuapp.com/booking/2 и нажать **Отправить**","Restful_booker  / Божкова И.В."
+"Перестановка местами параметров в теле запроса","Открыт Postman
+Выбран метод запроса **PUT**
+Введен URL - https://restful-booker.herokuapp.com/booking/2
+
+-H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'Cookie: token=<валидный_токен>","UpdateBooking","Updates a current booking and with a partial payload","","В теле запроса ввести
+**{
+""lastname"" : ""Gorobets"",
+""firstname"" : ""Ira"",
+""depositpaid"" : true,
+""totalprice"" : 12089,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}** и нажать **Отправить**","","","Restful_booker  / Божкова И.В."
+"Well Formed JSON (корректность синтаксиса JSON)","Открыт Postman
+
+Выбран метод запроса **PUT**
+Введен URL https://restful-booker.herokuapp.com/booking/2
+
+-H 'Content-Type: application/json
+-H 'Accept: application/json
+-H 'Cookie: token=<валидный_токен>","UpdateBooking","Updates a current booking and with a partial payload","1. В теле запроса внести 
+**{
+""firstname"" : ""Ira"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 12089,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch"",
+}** и нажать **Отправить**
+
+(лишняя запятая в конце объекта)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+2. В теле запроса ввести 
+**{
+""firstname"" : ""Ira"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 12089
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}** и нажать **Отправить**
+
+(пропуск запятой в середине объекта)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+3. В теле запроса ввести 
+**{
+""firstname"" : ""Ira"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 12089,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+** и нажать **Отправить**
+
+(пропуск фигурной скобки объекта)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+4. В теле запроса ввести 
+**[
+""firstname"" : ""Ira"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 12089,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+],
+""additionalneeds"" : ""Lunch""
+** и нажать **Отправить**
+
+(использование квадратных скобок массива)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+5. В теле запроса ввести 
+**{
+""firstname"" : ""Ira"";
+""lastname"" : ""Gorobets"",
+""totalprice"" : 12089,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+** и нажать **Отправить**
+
+(использование точки с запятой после ""firstname"" : ""Ira""; )
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400","","1. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+2. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+3. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+4. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400
+5. В теле ответа отображается результат:
+
+**Bad Request**
+
+код состояния HTTP 400","1. В теле запроса внести 
+**{
+""firstname"" : ""Ira"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 12089,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch"",
+}** и нажать **Отправить**
+
+(лишняя запятая в конце объекта)
+2. В теле запроса ввести 
+**{
+""firstname"" : ""Ira"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 12089
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}** и нажать **Отправить**
+
+(пропуск запятой в середине объекта)
+3. В теле запроса ввести 
+**{
+""firstname"" : ""Ira"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 12089,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+** и нажать **Отправить**
+
+(пропуск фигурной скобки объекта)
+4. В теле запроса ввести 
+**[
+""firstname"" : ""Ira"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 12089,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+],
+""additionalneeds"" : ""Lunch""
+** и нажать **Отправить**
+
+(использование квадратных скобок массива)
+5. В теле запроса ввести 
+**{
+""firstname"" : ""Ira"";
+""lastname"" : ""Gorobets"",
+""totalprice"" : 12089,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+** и нажать **Отправить**
+
+(использование точки с запятой после ""firstname"" : ""Ira""; )","Restful_booker  / Божкова И.В."
+"Подмена типа метода запроса","Открыт Postman
+Введен URL https://restful-booker.herokuapp.com/booking/2
+Метод запроса - **PUT**
+
+В теле запроса введен: **{
+""firstname"" : ""Ira"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 12089,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**","UpdateBooking","Updates a current booking and with a partial payload","1. Выбрать метод запроса **GET** и нажать **Отправить**
+
+(совсем разные типы запросов)
+Expected Result:
+В теле ответа отображается результат:
+
+**Not Found**
+
+и код состояния HTTP 404
+2. Выбрать метод запроса **POST** и нажать Отправить
+
+(схожие типы запросов)
+Expected Result:
+В теле ответа отображается результат:
+
+**Not Found**
+
+и код состояния HTTP 404","","1. В теле ответа отображается результат:
+
+**Not Found**
+
+и код состояния HTTP 404
+2. В теле ответа отображается результат:
+
+**Not Found**
+
+и код состояния HTTP 404","1. Выбрать метод запроса **GET** и нажать **Отправить**
+
+(совсем разные типы запросов)
+2. Выбрать метод запроса **POST** и нажать Отправить
+
+(схожие типы запросов)","Restful_booker  / Божкова И.В."
+"Проверка параметров URL","Открыт Postman
+Выбран метод запроса **PUT**
+Введен URL https://restful-booker.herokuapp.com/booking
+
+В теле запроса введен **{
+""firstname"" : ""Ira"",
+""lastname"" : ""Gorobets"",
+""totalprice"" : 12089,
+""depositpaid"" : true,
+""bookingdates"" : {
+""checkin"" : ""2023-03-01"",
+""checkout"" : ""2023-03-05""
+},
+""additionalneeds"" : ""Lunch""
+}**","UpdateBooking","Updates a current booking and with a partial payload","1. Выбрать **Params**, в поле ""KEY"" ввести **id**, в поле ""VALUE"" ввести **123** и нажать **Отправить**
+
+(недопустимые параметры в URL)
+Expected Result:
+В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400","","1. В теле ответа отображается результат:
+
+**Bad Request**
+
+и код состояния HTTP 400","1. Выбрать **Params**, в поле ""KEY"" ввести **id**, в поле ""VALUE"" ввести **123** и нажать **Отправить**
+
+(недопустимые параметры в URL)","Restful_booker  / Божкова И.В."
+"Удалить бронирование, используя валидный ID","Открыт Postman
+
+ -H 'Content-Type: application/json
+-H 'Cookie: token=<валидный_токен> (либо Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=)
+
+Создано новое бронирование:
+
+**{
+    ""bookingid"": <new_id>,
+    ""booking"": {
+        ""firstname"": ""Ira"",
+        ""lastname"": ""Gorobets"",
+        ""totalprice"": 12089,
+        ""depositpaid"": true,
+        ""bookingdates"": {
+            ""checkin"": ""2023-03-01"",
+            ""checkout"": ""2023-03-05""
+        },
+        ""additionalneeds"": ""Lunch""
+    }
+}**
+
+где **<new_id>** - id созданного бронирования","DeleteBooking","Returns the ids of all the bookings that exist within the API. Can take optional query strings to search and return a subset of booking ids.","1. 1. Выбрать метод **DELETE**
+2. Ввести URL https://restful-booker.herokuapp.com/booking/<new_id>
+3. Нажать **Отправить**
+
+Expected Result:
+В теле ответа результат:
+
+**Created**
+
+код состояния HTTP 200
+2. 1. Ввести URL https://restful-booker.herokuapp.com/booking/<new_id>
+2. Изменить метод запроса на **GET**
+3. Нажать **Отправить**
+Expected Result:
+В теле ответа результат:
+
+**NOT FOUND**
+
+код состояния HTTP 404","","1. В теле ответа результат:
+
+**Created**
+
+код состояния HTTP 200
+2. В теле ответа результат:
+
+**NOT FOUND**
+
+код состояния HTTP 404","1. 1. Выбрать метод **DELETE**
+2. Ввести URL https://restful-booker.herokuapp.com/booking/<new_id>
+3. Нажать **Отправить**
+
+2. 1. Ввести URL https://restful-booker.herokuapp.com/booking/<new_id>
+2. Изменить метод запроса на **GET**
+3. Нажать **Отправить**","Restful_booker  / Божкова И.В."
+"Удалить несуществующее бронирование","Открыт Postman
+
+-H 'Content-Type: application/json
+-H 'Cookie: token=<валидный_токен> (либо Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=)
+
+","DeleteBooking","Returns the ids of all the bookings that exist within the API. Can take optional query strings to search and return a subset of booking ids.","1. 1. Выбрать метод **DELETE**
+2. Ввести URL https://restful-booker.herokuapp.com/booking/300000
+3. Нажать **Отправить**
+Expected Result:
+В теле ответа отображается результат:
+
+**Method Not Allowed**
+
+код состояния 405","","1. В теле ответа отображается результат:
+
+**Method Not Allowed**
+
+код состояния 405","1. 1. Выбрать метод **DELETE**
+2. Ввести URL https://restful-booker.herokuapp.com/booking/300000
+3. Нажать **Отправить**","Restful_booker  / Божкова И.В."
+"Удалить бронирование, используя недопустимые данные в ID","Открыт Postman
+
+Выбран метод запроса **DELETE**
+
+-H 'Content-Type: application/json
+-H 'Cookie: token=<валидный_токен> (либо Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=)","DeleteBooking","Returns the ids of all the bookings that exist within the API. Can take optional query strings to search and return a subset of booking ids.","1. Ввести URL https://restful-booker.herokuapp.com/booking/0 и нажать **Отправить**
+
+(значение id = 0)
+Expected Result:
+В теле ответа результат:
+
+**NOT FOUND**
+
+код состояния HTTP 404
+2. Ввести https://restful-booker.herokuapp.com/booking/2qwerty 
+
+(использование валидного ID с невалидным набором букв)
+Expected Result:
+В теле ответа результат:
+
+**NOT FOUND**
+
+код состояния HTTP 404
+3. Ввести URL https://restful-booker.herokuapp.com/booking/2_2?*:%;№()* 
+
+(использование валидного ID с рандомными символами ASCII)
+Expected Result:
+В теле ответа результат:
+
+**NOT FOUND**
+
+код состояния HTTP 404
+4. Ввести URL https://restful-booker.herokuapp.com/booking/ 2 
+
+(после **booking/** поставить пробел)
+Expected Result:
+В теле ответа результат:
+
+**NOT FOUND**
+
+код состояния HTTP 404
+5. Ввести URL https://restful-booker.herokuapp.com/booking/2 2 
+
+(после **booking/2** поставить пробел)
+Expected Result:
+В теле ответа результат:
+
+**NOT FOUND**
+
+код состояния HTTP 404","","1. В теле ответа результат:
+
+**NOT FOUND**
+
+код состояния HTTP 404
+2. В теле ответа результат:
+
+**NOT FOUND**
+
+код состояния HTTP 404
+3. В теле ответа результат:
+
+**NOT FOUND**
+
+код состояния HTTP 404
+4. В теле ответа результат:
+
+**NOT FOUND**
+
+код состояния HTTP 404
+5. В теле ответа результат:
+
+**NOT FOUND**
+
+код состояния HTTP 404","1. Ввести URL https://restful-booker.herokuapp.com/booking/0 и нажать **Отправить**
+
+(значение id = 0)
+2. Ввести https://restful-booker.herokuapp.com/booking/2qwerty 
+
+(использование валидного ID с невалидным набором букв)
+3. Ввести URL https://restful-booker.herokuapp.com/booking/2_2?*:%;№()* 
+
+(использование валидного ID с рандомными символами ASCII)
+4. Ввести URL https://restful-booker.herokuapp.com/booking/ 2 
+
+(после **booking/** поставить пробел)
+5. Ввести URL https://restful-booker.herokuapp.com/booking/2 2 
+
+(после **booking/2** поставить пробел)","Restful_booker  / Божкова И.В."
+"Удалить уже удаленное бронирование","Открыт Postman
+
+Удалено бронирование с **id=45**
+
+Выбран метод запроса **DELETE**
+
+-H 'Content-Type: application/json
+-H 'Cookie: token=<валидный_токен> (либо Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=)
+","DeleteBooking","Returns the ids of all the bookings that exist within the API. Can take optional query strings to search and return a subset of booking ids.","1. 1. Выбрать метод **DELETE**
+2. Ввести URL https://restful-booker.herokuapp.com/booking/45
+3. Нажать **Отправить**
+Expected Result:
+В теле ответа результат:
+
+**Not Found**
+
+код состояния HTTP 404","","1. В теле ответа результат:
+
+**Not Found**
+
+код состояния HTTP 404","1. 1. Выбрать метод **DELETE**
+2. Ввести URL https://restful-booker.herokuapp.com/booking/45
+3. Нажать **Отправить**","Restful_booker  / Божкова И.В."
+"Отправить пустой запрос на удаление","Открыт Postman
+
+Выбран метод запроса **DELETE**
+
+-H 'Content-Type: application/json
+-H 'Cookie: token=<валидный_токен> (либо Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=)","DeleteBooking","Returns the ids of all the bookings that exist within the API. Can take optional query strings to search and return a subset of booking ids.","1. Ввести URL https://restful-booker.herokuapp.com/booking и нажать **Отправить**
+Expected Result:
+В теле ответа результат:
+
+**NOT FOUND**
+
+код состояния HTTP 404","","1. В теле ответа результат:
+
+**NOT FOUND**
+
+код состояния HTTP 404","1. Ввести URL https://restful-booker.herokuapp.com/booking и нажать **Отправить**","Restful_booker  / Божкова И.В."
+"Проверка параметров заголовков запроса","Открыт Postman
+
+Получен валидный токен
+Выбран метод запроса **DELETE**
+Введен URL https://restful-booker.herokuapp.com/booking/2
+
+-H 'Content-Type: application/json' \
+  -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM='","DeleteBooking","Returns the ids of all the bookings that exist within the API. Can take optional query strings to search and return a subset of booking ids.","1. 1. В **Authorization** выбрать **No Auth**
+2. В ""Headers"" в поле ""KEY"" ввести **COOKIE**, в поле ""VALUE"" ввести TOKEN=<валидный_токен>
+3. Нажать **Отправить**
+
+(альтернативаное валидное значение в заголовке для аутентификации, регистронезависимость ключа и значения)
+Expected Result:
+В теле ответа отображен результат:
+
+**Created**
+
+код состояния 200
+2. Нажать ""Headers"", убрать все галочки с заголовков и нажать **Отправить**
+
+(Обязательность)
+Expected Result:
+В теле ответа отображен результат:
+
+**Bad Request**
+
+Код состояния HTTP 400
+3. Нажать ""Headers"", в поле ""KEY"" ввести Accept, в поле ""VALUE"" ввести application/javascript и нажать **Отправить** (невалидное значение заголовка)
+Expected Result:
+В теле ответа отображен результат:
+
+**Not Found**
+
+Код состояния HTTP 404","","1. В теле ответа отображен результат:
+
+**Created**
+
+код состояния 200
+2. В теле ответа отображен результат:
+
+**Bad Request**
+
+Код состояния HTTP 400
+3. В теле ответа отображен результат:
+
+**Not Found**
+
+Код состояния HTTP 404","1. 1. В **Authorization** выбрать **No Auth**
+2. В ""Headers"" в поле ""KEY"" ввести **COOKIE**, в поле ""VALUE"" ввести TOKEN=<валидный_токен>
+3. Нажать **Отправить**
+
+(альтернативаное валидное значение в заголовке для аутентификации, регистронезависимость ключа и значения)
+2. Нажать ""Headers"", убрать все галочки с заголовков и нажать **Отправить**
+
+(Обязательность)
+3. Нажать ""Headers"", в поле ""KEY"" ввести Accept, в поле ""VALUE"" ввести application/javascript и нажать **Отправить** (невалидное значение заголовка)","Restful_booker  / Божкова И.В."
+"Подмена типа метода запроса","Открыт Postman
+Введен URL https://restful-booker.herokuapp.com/booking/40
+
+","DeleteBooking","Returns the ids of all the bookings that exist within the API. Can take optional query strings to search and return a subset of booking ids.","1. Выбрать метод запроса **POST** и нажать **Отправить**
+Expected Result:
+В теле ответа отображается результат:
+
+Not Found
+
+и код состояния HTTP 404","","1. В теле ответа отображается результат:
+
+Not Found
+
+и код состояния HTTP 404","1. Выбрать метод запроса **POST** и нажать **Отправить**","Restful_booker  / Божкова И.В."
+"Проверка работоспособности API","Открыт Postman
+Выбран метод запроса **GET**","PING","","1. Ввести URL https://restful-booker.herokuapp.com/ping и нажать **Отправить**
+Expected Result:
+В теле ответа отображается результат:
+
+**Created**
+
+Код состояния HTTP 201","","1. В теле ответа отображается результат:
+
+**Created**
+
+Код состояния HTTP 201","1. Ввести URL https://restful-booker.herokuapp.com/ping и нажать **Отправить**","Restful_booker  / Божкова И.В."
+"Подмена типа метода запроса","Открыт Postman
+Введен URL https://restful-booker.herokuapp.com/booking","PING","","1. Выбрать метод запроса **POST** и нажать **Отправить**
+Expected Result:
+В теле ответа отображается результат:
+**Not Found**
+
+и код состояния HTTP 404","","1. В теле ответа отображается результат:
+**Not Found**
+
+и код состояния HTTP 404","1. Выбрать метод запроса **POST** и нажать **Отправить**","Restful_booker  / Божкова И.В."
+"Проверка параметров заголовков запроса","Открыт Postman
+Выбран метод запроса **GET**
+Введен URL https://restful-booker.herokuapp.com/booking/ping","PING","","1. Нажать ""Headers"", в поле ""KEY"" ввести **ACCEPT**, в поле ""VALUE"" ввести */* и нажать **Отправить** (регистронезависимость заголовка)
+Expected Result:
+В теле ответа отображен результат:
+**Created**
+
+Код состояния HTTP 201
+2. Выбрать ""Headers"", убрать все галочки с заголовков и нажать **Отправить**
+Expected Result:
+В теле ответа отображен результат:
+**Bad Request**
+
+Код состояния HTTP 400
+3. Нажать ""Headers"", в поле ""KEY"" ввести **HOST**, в поле ""VALUE"" ввести 1234567890 и нажать **Отправить** (невалидное значение заголовка)
+Expected Result:
+В теле ответа отображен результат:
+
+**<!DOCTYPE html>
+<html>
+  <head>
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+    <meta charset=""utf-8"">
+    <title>Heroku | Application Error</title>
+    <style media=""screen"">
+      html,body,iframe {
+        margin: 0;
+        padding: 0;
+}
+      html,body {
+        height: 100%;
+        overflow: hidden;
+}
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+}
+    </style>
+  </head>
+  <body>
+    <iframe src=""//www.herokucdn.com/error-pages/no-such-app.html""></iframe>
+  </body>
+</html>**
+
+Код состояния HTTP 404","","1. В теле ответа отображен результат:
+**Created**
+
+Код состояния HTTP 201
+2. В теле ответа отображен результат:
+**Bad Request**
+
+Код состояния HTTP 400
+3. В теле ответа отображен результат:
+
+**<!DOCTYPE html>
+<html>
+  <head>
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+    <meta charset=""utf-8"">
+    <title>Heroku | Application Error</title>
+    <style media=""screen"">
+      html,body,iframe {
+        margin: 0;
+        padding: 0;
+}
+      html,body {
+        height: 100%;
+        overflow: hidden;
+}
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+}
+    </style>
+  </head>
+  <body>
+    <iframe src=""//www.herokucdn.com/error-pages/no-such-app.html""></iframe>
+  </body>
+</html>**
+
+Код состояния HTTP 404","1. Нажать ""Headers"", в поле ""KEY"" ввести **ACCEPT**, в поле ""VALUE"" ввести */* и нажать **Отправить** (регистронезависимость заголовка)
+2. Выбрать ""Headers"", убрать все галочки с заголовков и нажать **Отправить**
+3. Нажать ""Headers"", в поле ""KEY"" ввести **HOST**, в поле ""VALUE"" ввести 1234567890 и нажать **Отправить** (невалидное значение заголовка)","Restful_booker  / Божкова И.В."
